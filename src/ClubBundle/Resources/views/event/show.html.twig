@@ -1,0 +1,58 @@
+{% extends 'ClubBundle::base.html.twig' %}
+{% block title %} {{ event.titre }} {% endblock %}
+                {% block spec %}<a class="navbar-brand" href="{{ path('event_index')}}">Compte d'administrateur</a>{% endblock spec %}
+{% block A %}
+    <ul class="nav navbar-nav side-nav">
+        <li><a href="{{ path('club_homepage') }}"><i class="fa fa-dashboard"></i> Retour au site du club</a></li>
+        <li><a href="{{ path('event_index') }}"><i class="fa fa-dashboard"></i> Liste des événements</a></li>
+        <li><a href="{{ path('event_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un événement</a></li>
+        <li><a href="{{ path('club_valider') }}"><i class="fa fa-bar-chart-o"></i> Valider les inscriptions</a></li>
+        <li><a href="{{ path('member_index') }}"><i class="fa fa-bar-chart-o"></i> Afficher les membres</a></li>
+        <li><a href="{{ path('member_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un membre</a></li>
+
+    </ul>
+{% endblock A %}
+{% block body %}
+    <h1>{{ event.titre }}</h1>
+<div class="panel-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ event.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ event.description }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img src="{{ asset('uploads/' ~ event.photo) }}" height="200" width="200" ></td>
+            </tr>
+            <tr>
+                <th>Membres inscrits </th>
+                <td><ol>
+                    {% for inscrit in inscriptions %}
+                        <li> {{ inscrit.nomUser  }} </li>
+                    {% endfor %}
+                    </ol></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <a href="{{ path('event_edit', { 'id': event.id }) }}"> <button   class="btn btn-warning" >
+            Editer
+        </button></a>
+
+    <a href="{{ path('event_delete', { 'id': event.id }) }}"> <button   class="btn btn-danger" >
+            Supprimer
+        </button></a>
+
+    <a href="{{ path('event_index') }}"> <button  type="button" class="btn btn-default" >
+            Retour à la liste
+        </button></a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'ClubBundle:Default:index.html.twig' %}
+    {% block esm %}<title>{{ member.prenom}} {{ member.nom }}</title> {% endblock %}
+
+{% block content %}
+<div class="container jumbotron" style="margin-top: 8%">
+    <div class="row">
+        <!-- Profile Pic -->
+        <div class="my-pic center col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-offset="200" style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+            <img src="{{ asset('uploads/' ~ member.photo) }}" class="img-responsive img-circle" alt="">
+        </div>
+        <div class="introduction col-sm-8 col-xs-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-offset="200" style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+            <h2 class="h2">{{ member.prenom}} {{member.nom }}</h2>
+            <div class="heading-line"></div>
+            <p class="introduce">{{member.niveau }}ème année {{ member.specialite }}</p>
+            <p class="intro"> Insert projects here</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="profile col-sm-4 col-xs-12 wow fadeInUp text-center" data-wow-duration="0.5s" data-wow-offset="200" style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+            <h3>Informations</h3>
+            <div class="heading-line"></div>
+            <div class="personal-wrapper">
+                <span><strong>name: </strong></span> {{ member.prenom}} {{member.nom }}<br>
+                <span><strong>E-mail: </strong>personal@website.com</span><br>
+                <span><strong>phone number: </strong>+(555) 176 245 221</span><br>
+                <span><strong>website: </strong>www.website.com</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

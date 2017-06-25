@@ -1,0 +1,17 @@
+club:
+    resource: "@ClubBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+Events:
+    resource: "@ClubBundle/Resources/config/routing/event.yml"
+    prefix:   /event
+
+Members:
+    resource: "@ClubBundle/Resources/config/routing/member.yml"
+    prefix:   /member

@@ -1,0 +1,40 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% extends 'ClubBundle::base.html.twig' %}
+{% block title %} Ajouter event  {% endblock %}
+                {% block spec %}<a class="navbar-brand" href="{{ path('event_index')}}">Compte d'administrateur</a>{% endblock spec %}
+{% block A %}
+    <ul class="nav navbar-nav side-nav">
+        <li><a href="{{ path('club_homepage') }}"><i class="fa fa-dashboard"></i> Retour au site du club</a></li>
+        <li><a href="{{ path('event_index') }}"><i class="fa fa-dashboard"></i> Liste des événements</a></li>
+        <li><a href="{{ path('event_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un événement</a></li>
+        <li><a href="{{ path('club_valider') }}"><i class="fa fa-bar-chart-o"></i> Valider les inscriptions</a></li>
+        <li><a href="{{ path('member_index') }}"><i class="fa fa-bar-chart-o"></i> Afficher les membres</a></li>
+        <li><a href="{{ path('member_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un membre</a></li>
+
+    </ul>
+{% endblock A %}
+{% block body %}
+    <h1>Ajouter un membre</h1>
+<main class="container clear">
+
+    <div class="jumbotron" style="margin-right: 25%; margin-left: 25%">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary" value="Create" >Ajouter</button>
+
+    <a href="{{ path('member_index') }}"> <button  type="reset" class="btn btn-default" >
+            Reset
+        </button></a>
+
+    <a href="{{ path('member_index') }}"> <button  type="button" class="btn btn-default" >
+            Annuler
+        </button></a>
+
+    {{ form_end(form) }}
+
+    </div>
+</main>
+
+
+
+{% endblock %}

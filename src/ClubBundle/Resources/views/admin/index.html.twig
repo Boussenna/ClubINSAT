@@ -1,0 +1,62 @@
+{% extends 'ClubBundle::base.html.twig' %}
+{% block title %}{{ app.user.username|capitalize  }}{% endblock %}
+                {% block spec %}<a class="navbar-brand" href="{{ path('event_index')}}">Compte d'administrateur</a>{% endblock spec %}
+{% block A %}
+    <ul class="nav navbar-nav side-nav">
+        <li><a href="{{ path('club_homepage') }}"><i class="fa fa-dashboard"></i> Retour au site du club</a></li>
+        <li><a href="{{ path('event_index') }}"><i class="fa fa-dashboard"></i> Liste des événements</a></li>
+        <li><a href="{{ path('event_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un événement</a></li>
+        <li><a href="{{ path('club_valider') }}"><i class="fa fa-bar-chart-o"></i> Valider les inscriptions</a></li>
+        <li><a href="{{ path('member_index') }}"><i class="fa fa-bar-chart-o"></i> Afficher les membres</a></li>
+        <li><a href="{{ path('member_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un membre</a></li>
+
+
+    </ul>
+{% endblock A %}
+{% block body %}
+
+    <h1>    Liste des membres </h1>
+
+<div class='panel-body'>
+    <table class="table">
+        <thead>
+            <tr style="color:black">
+                <th>Id</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td><a href="{{ path('member_show', { 'id': member.id }) }}" > {{ member.id }}</a></td>
+                <td> {{ member.prenom }} </td>
+                <td> {{ member.nom }} </td>
+                <td>
+                    <td>
+
+
+                            <a href="{{ path('member_show', { 'id': member.id }) }}" >
+                                <button class='btn btn-info' >      Details  </button> </a>
+
+
+
+                                <a href="{{ path('member_edit', { 'id': member.id }) }}" >
+                                    <button class='btn btn-warning' >     Editer  </button> </a>
+
+
+                        </td>
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+            <a href="{{ path('member_new') }}"> <button class="btn btn-primary">Ajouter un membre</button></a>
+
+    </ul>
+{% endblock %}

@@ -1,0 +1,34 @@
+club_homepage:
+    path:     /
+    defaults: { _controller: ClubBundle:Default:index }
+
+members_index:
+    path:     /profil
+    defaults: { _controller: ClubBundle:Default:member }
+
+
+club_event:
+    path:     /eventShow/{id}
+    defaults: { _controller: ClubBundle:Default:event }
+
+member_profile:
+    path:     /ProfileShow/{id}
+    defaults: { _controller: ClubBundle:Default:profil}
+
+club_subscribe:
+    path:     /subscribe/{id}
+    defaults: { _controller: ClubBundle:Default:subscribe }
+
+club_valider:
+    path:     /valider
+    defaults: { _controller: ClubBundle:Default:valider }
+
+club_confirmer:
+    path:     /confirmer/{id}/{confirm}
+    defaults: { _controller: ClubBundle:Default:confirmer }
+
+club_inscriptions:
+    path:     /inscriptions
+    defaults: { _controller: ClubBundle:Default:inscriptions }
+
+

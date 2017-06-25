@@ -1,0 +1,16 @@
+{% extends 'ClubBundle::base.html.twig' %}
+
+{% block title %}{{ app.user.username|capitalize  }}{% endblock %}
+                {% block spec %}<a class="navbar-brand" href="{{ path('members_index')}}">Gérer mon compte</a>{% endblock spec %}
+
+{% block A %}
+    <ul class="nav navbar-nav side-nav">
+        <li><a href="{{ path('club_homepage') }}"><i class="fa fa-dashboard"></i> Retour au site du club</a></li>
+        <li><a href=" {{ path('fos_user_profile_show') }}"><i class="fa fa-dashboard"></i> Consulter mes informations</a></li>
+        <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-bar-chart-o"></i> Editer mes informations</a></li>
+    </ul>
+{% endblock A %}
+
+{% block body %}
+    <h1> Bonjour {{ app.user.username|capitalize  }}! </h1>
+{% endblock body %}

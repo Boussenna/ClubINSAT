@@ -1,0 +1,52 @@
+{% extends 'ClubBundle:Default:index.html.twig' %}
+
+{% block esm %}<title> {{ event.titre }}|Club INSAT</title> {% endblock %}
+ {% block content %}
+
+         <div class="modal-dialog" style="margin-top: 10%">
+             <div class="modal-content">
+                 <div class="close-modal" data-dismiss="modal">
+                     <div class="lr">
+                         <div class="rl">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="container">
+                     <div class="row">
+                             <div class="modal-body" style="text-align: center; margin-right: 50%">
+                                 <div style="margin-top: 5%; text-align: center" >
+                                     {% for msg in app.session.flashBag.get('success') %}
+                                         <div class="alert alert-success">
+                                             <strong> {{ msg }}</strong>
+                                         </div>
+                                     {% endfor %}
+                                     {% for msg in app.session.flashBag.get('alert') %}
+                                         <div class="alert alert-danger">
+                                             <strong> {{ msg }}</strong>
+                                         </div>
+                                     {% endfor %}
+                                 </div>
+                                 <!-- Project Details Go Here -->
+                                 <h2>{{ event.titre }}</h2>
+                                 <p class="item-intro text-muted">Inscrivez-vous!</p>
+                                 <img class="img-centered" style="height: 30%; width: 30%" src="{{ asset('uploads/' ~ event.photo) }}" alt="">
+                                 <p>{{ event.description }}</p>
+                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                 <h3 style="text-align: center"><a href="{{ path('club_subscribe', { 'id': event.id }) }}"><button  class="btn btn-primary">{{ bool }}</button></a> </h3>
+                                 {% elseif test is not empty %}
+                                     <h3 style="text-align: center"><a href="{{ path('club_subscribe', { 'id': event.id }) }}"><button  class="btn btn-primary">{{ bool }}</button></a> </h3>
+
+                                 {% else %}
+                                     <h3 style="text-align: center"><a href="{{ path('fos_user_security_login') }}"><button  class="btn btn-primary">S'inscrire</button></a></h3>
+
+                                     {% endif %}
+                             </div>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+
+
+{% endblock content %}

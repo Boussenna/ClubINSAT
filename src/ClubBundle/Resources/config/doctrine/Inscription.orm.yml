@@ -1,0 +1,36 @@
+ClubBundle\Entity\Inscription:
+    type: entity
+    table: null
+    repositoryClass: ClubBundle\Repository\InscriptionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        userId:
+            type: integer
+            column: user_id
+        eventId:
+            type: integer
+            column: event_id
+        etat:
+            type: string
+            length: 255
+            nullable: true
+            column: etat
+
+        nomEvent:
+            type: string
+            length: 255
+            nullable: true
+            column: nomEvent
+
+        nomUser:
+            type: string
+            length: 255
+            nullable: true
+            column: nomUser
+
+    lifecycleCallbacks: {  }

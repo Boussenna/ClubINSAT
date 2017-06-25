@@ -1,0 +1,69 @@
+{% extends 'ClubBundle::base.html.twig' %}
+{% block title %} Validation d'inscriptions {% endblock %}
+                {% block spec %}<a class="navbar-brand" href="{{ path('event_index')}}">Compte d'administrateur</a>{% endblock spec %}
+{% block A %}
+    <ul class="nav navbar-nav side-nav">
+        <li><a href="{{ path('club_homepage') }}"><i class="fa fa-dashboard"></i> Retour au site du club</a></li>
+        <li><a href="{{ path('event_index') }}"><i class="fa fa-dashboard"></i> Liste des événements</a></li>
+        <li><a href="{{ path('event_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un événement</a></li>
+        <li><a href="{{ path('club_valider') }}"><i class="fa fa-bar-chart-o"></i> Valider les inscriptions</a></li>
+        <li><a href="{{ path('member_index') }}"><i class="fa fa-bar-chart-o"></i> Afficher les membres</a></li>
+        <li><a href="{{ path('member_new') }}"><i class="fa fa-bar-chart-o"></i> Ajouter un membre</a></li>
+
+    </ul>
+{% endblock A %}
+
+{% block body %}
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            <strong> {{ msg }}</strong>
+        </div>
+    {% endfor %}
+    {% for msg in app.session.flashBag.get('echec') %}
+        <div class="alert alert-danger">
+            <strong> {{ msg }}</strong>
+        </div>
+    {% endfor %}
+    <h1>    Liste des demandes d'inscription </h1>
+
+    <div class='panel-body'>
+        <table class="table">
+            <thead>
+            <tr style="color:#00aced">
+                <th>Id</th>
+                <th>Evenement</th>
+                <th>Utilisateur</th>
+                <th>Etat</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for inscription in inscriptions %}
+                <tr>
+                <td> {{ inscription.id }} </td>
+
+                    <td> {{ inscription.nomEvent }} </td>
+                    <td> {{ inscription.nomUser }} </td>
+                    <td>  {{ inscription.etat }}</td>
+                    <td>
+
+
+                     <a href="{{ path('club_confirmer', { 'id': inscription.id , 'confirm':"accepter" }) }}" >
+                            <button class='btn btn-success' >   Valider  </button> </a>
+
+
+
+                        <a href="{{ path('club_event', { 'id': inscription.id, 'confirm':"refuser" }) }}" >
+                            <button class='btn btn-danger' >     Refuser  </button> </a>
+
+                    </td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    </ul>
+{% endblock %}

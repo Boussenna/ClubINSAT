@@ -1,0 +1,36 @@
+ClubBundle\Entity\Member:
+    type: entity
+    table: null
+    repositoryClass: ClubBundle\Repository\MemberRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        prenom:
+            type: string
+            length: 255
+            column: Prenom
+        specialite:
+            type: string
+            length: 255
+            column: Specialite
+        institut:
+            type: string
+            length: 255
+            column: Institut
+        niveau:
+            type: string
+            length: 255
+            column: Niveau
+        photo:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }
